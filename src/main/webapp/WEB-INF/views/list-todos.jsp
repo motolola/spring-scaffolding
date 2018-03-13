@@ -1,11 +1,6 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<html>
-<head>
-<link href="webjars/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-<link href="webjars/fontawesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-<title>Yahoo!!</title>
-</head>
-<body>
+<%@ include file="parts/header.jspf" %>
+
+<%@ include file="parts/navigation.jspf" %>
 <div class="container"> 
 
 
@@ -23,9 +18,13 @@ Hi ${name}, Your Todos are ... <br>
 <tr>
 <td>${todo.user}</td>
 <td>${todo.desc}</td>
-<td>${todo.targetDate}</td>
+<td>
+<fmt:formatDate pattern="dd-MM-yyyy" value="${todo.targetDate}" />
+</td>
 <td>${todo.done}</td>
 <td>
+<a type="button" class="btn btn-info" 
+		href="/update-todo?id=${todo.id}">Update</a>
 <a type="button" class="btn btn-danger" 
 		href="/delete-todo?id=${todo.id}">Delete</a>
 </td>

@@ -14,8 +14,9 @@ public class TodoService {
 	
 	private static List<Todo> todos = new ArrayList<Todo>();
 	private static int todoCount = 3;
+	
 
-	static {
+	static { 
 		todos.add(new Todo(1, "in28Minutes", "Learn Spring MVC", new Date(),
 				false));
 		todos.add(new Todo(2, "in28Minutes", "Learn Struts", new Date(), false));
@@ -44,6 +45,19 @@ public class TodoService {
 				iterator.remove();
 			}
 		}
+	}
+	
+	public Todo retrieveTodo(int id) {
+		for (Todo todo : todos) {
+			if (todo.getId() == id)
+				return todo;
+		}
+		return null;
+	}
+
+	public void updateTodo(Todo todo) {
+		todos.remove(todo);
+		todos.add(todo);
 	}
 
 }
